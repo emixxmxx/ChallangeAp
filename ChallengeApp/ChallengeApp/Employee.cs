@@ -2,9 +2,8 @@
 {
     public class Employee
     {
-        private List<int> score1 = new List<int>();
-        private List<int> score2 = new List<int>();
-        private List<int> score3 = new List<int>();
+        private List<int> score = new List<int>();
+
         public Employee(string name, string surname, int age)
         {
             this.Name = name;
@@ -15,38 +14,19 @@
         public string Surname { get; private set; }
         public int Age { get; private set; }
 
-        public int R1
+        public int Result
         {
             get
             {
-                return this.score1.Sum();
+                return this.score.Sum();
             }
         }
-        public int R2
+       
+        
+        public void AddScore(int number)
         {
-            get
-            {
-                return this.score2.Sum();
-            }
+            this.score.Add(number);
         }
-        public int R3
-        {
-            get
-            {
-                return this.score3.Sum();
-            }
-        }
-        public void AddScore1(int number)
-        {
-            this.score1.Add(number);
-        }
-        public void AddScore2(int number1)
-        {
-            this.score2.Add(number1);
-        }
-        public void AddScore3(int number2)
-        {
-            this.score3.Add(number2);
-        }
+      
     }
 }
