@@ -1,10 +1,11 @@
 ﻿using ChallengeApp;
 
 var employee = new Employee("emixx", "Mxx");
-employee.AddGrade(15);
-employee.AddGrade(2);
-employee.AddGrade(3);
+employee.AddGrade(6.65); //double
+employee.AddGrade("14"); // string
+employee.AddGrade('7'); //char
+employee.AddGrade(15); // float
 var statistics = employee.GetStatistics();
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine($"Average: {statistics.Average:N2}"); //N2 - tj. wyświelta 2 miejsca po przecinku 
+Console.WriteLine($"Average: {statistics.Average:N2}");

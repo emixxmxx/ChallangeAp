@@ -2,21 +2,53 @@
 {
     public class Employee
     {
-        private List<float> grades = new List<float>(); //lista zbierająca punkty
+        private List<float> grades = new List<float>(); 
 
-        public Employee(string name, string surname) // kontruktor z paramentrem pozwala tworzyć osobnych uzytkownków
+        public Employee(string name, string surname) 
         {
             this.Name = name;
             this.Surname = surname;
         }
-   
+
         public string Name { get; private set; }
         public string Surname { get; private set; }
-      
-      
-        public void AddGrade(float grade) //metoda dodająca stopnie(grades)
+
+
+        public void AddGrade(float grade) 
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100)         
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("invalid grades void");
+            }
+        }
+
+        public void AddGrade(string grade) 
+        {
+            if (float.TryParse(grade, out float result)) 
+            {
+                this.AddGrade(result); 
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+
+        public void AddGrade(double grade)
+        {
+            float valueDouble = (float)grade; 
+            this.AddGrade(valueDouble);
+        }
+        public void AddGrade(char grade)
+        {
+            char valueChar = grade;
+            float i;
+            i = (float)valueChar;
+            this.AddGrade(i);
         }
 
         public Statistics GetStatistics()
@@ -25,24 +57,19 @@
 
             statistics.Average = 0;
             statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;    
+            statistics.Min = float.MaxValue;
 
 
-            foreach(var grade in this.grades) 
+            foreach (var grade in this.grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade); // Math.Max( wartość 1, wartość 2) - ten math porównuje dwie wartości najpierw tą która już mamy potem ta którą zobaczy jako następną
+                statistics.Max = Math.Max(statistics.Max, grade); 
                 statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade; // tj. statistics.Average = statistics.Average + grade 
+                statistics.Average += grade; 
             }
-
-            statistics.Average = statistics.Average / this.grades.Count; // suma podzielona przez ilość wartości 
-
+            statistics.Average = statistics.Average / this.grades.Count; 
 
             return statistics;
 
         }
-
-
-
     }
 }
