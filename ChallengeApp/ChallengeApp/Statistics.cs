@@ -3,7 +3,7 @@ namespace ChallengeApp
 {
     public class Statistics
     {
-        public float Min { get; set; } //propercje (prop + tab)
+        public float Min { get; set; } 
         
         public float Max { get; set; }
 
