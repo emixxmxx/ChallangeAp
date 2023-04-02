@@ -1,54 +1,36 @@
-namespace ChallengeApp.Tests
+namespace ChallengeApp.tests
 {
     public class Tests
     {
         [Test]
-        public void WhenGradesAreGeted_ShouldReturnMaxGrade()
+        public void WhenAverageBetween20And40_ShouldReturnAverageLetterD()
         {
-            // arragne - przygotowanie testu
-            var employee = new Employee("emixx", "Mxx");
-            employee.AddGrade(6);
-            employee.AddGrade(2);
-            employee.AddGrade(1);
+            // arragne 
+            var employee = new Employee();
+            employee.AddGrade(25);
+            employee.AddGrade('C'); //60
+            employee.AddGrade(7);
 
-            // act - czêœæ uruchamiaj¹ca test
+            // act 
             var statistics = employee.GetStatistics();
 
-
-            // assert - sprawdzenie warunków 
-            Assert.AreEqual(6, statistics.Max); 
+            // assert 
+            Assert.AreEqual('D', statistics.AverageLetter); //average = 30.67
         }
         [Test]
-        public void WhenGradesAreGeted_ShouldReturnMinGrade()
+        public void WhenAverageBetween80And100_ShouldReturnAverageLetterA()
         {
-            // arragne - przygotowanie testu
-            var employee = new Employee("emixx", "Mxx");
-            employee.AddGrade(6);
-            employee.AddGrade(2);
-            employee.AddGrade(1);
+            // arragne 
+            var employee = new Employee();
+            employee.AddGrade(90);
+            employee.AddGrade('B'); //80
+            employee.AddGrade(88);
 
-            // act - czêœæ uruchamiaj¹ca test
+            // act 
             var statistics = employee.GetStatistics();
 
-
-            // assert - sprawdzenie warunków 
-            Assert.AreEqual(1, statistics.Min);
-        }
-        [Test]
-        public void WhenGradesAreGeted_ShouldReturnAverage()
-        {
-            // arragne - przygotowanie testu
-            var employee = new Employee("emixx", "Mxx");
-            employee.AddGrade(6);
-            employee.AddGrade(2);
-            employee.AddGrade(1);
-
-            // act - czêœæ uruchamiaj¹ca test
-            var statistics = employee.GetStatistics();
-
-
-            // assert - sprawdzenie warunków 
-            Assert.AreEqual(3, statistics.Average);
+            // assert 
+            Assert.AreEqual('A', statistics.AverageLetter); //average = 86
         }
 
     }
