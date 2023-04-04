@@ -4,15 +4,6 @@
     {
         private List<float> grades = new List<float>(); 
 
-        public Employee(string name, string surname) 
-        {
-            this.Name = name;
-            this.Surname = surname;
-        }
-
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-
         public Employee()
         {
         }
@@ -25,15 +16,15 @@
             }
             else
             {
-                Console.WriteLine("invalid grades void");
+                throw new Exception("błędny zakres liczb (podaj z zakresu 1-100");
             }
         }
 
         public void AddGrade(string grade) 
         {
-            if (float.TryParse(grade, out float result)) 
+            if (float.TryParse(grade, out float result))
             {
-                this.AddGrade(result); 
+                this.AddGrade(result);
             }
             else if (char.TryParse(grade, out char res))
             {
@@ -41,16 +32,9 @@
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("błędna wartość (podaj z zakresu float lub char)");
             }
         }
-
-        public void AddGrade(double grade)
-        {
-            float valueDouble = (float)grade;
-            this.AddGrade(valueDouble);
-        }
-
 
         public void AddGrade(char grade)
         {
@@ -59,7 +43,7 @@
                 case 'A':
                 case 'a':
                     this.grades.Add(100);
-                    break; 
+                    break;
                 case 'B':
                 case 'b':
                     this.grades.Add(80);
@@ -77,10 +61,10 @@
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong Letter");
-                    break;
+                    throw new Exception("błędna litera (podaj z zakresu A-E)");    
             }
         }
+
 
         public Statistics GetStatistics()
         {
@@ -98,9 +82,9 @@
             statistics.Average = statistics.Average / this.grades.Count;
             switch (statistics.Average) 
             {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
+                case var average when average >= 80: 
+                    statistics.AverageLetter = 'A'; 
+                    break;                          
                 case var average when average >= 60:
                     statistics.AverageLetter = 'B';
                     break;
@@ -115,8 +99,6 @@
                     break;
             }
             return statistics;
-        }
-
-        
+        }        
     }
 }

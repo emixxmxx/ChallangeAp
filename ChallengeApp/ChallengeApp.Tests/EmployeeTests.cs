@@ -23,7 +23,7 @@ namespace ChallengeApp.tests
             // arragne 
             var employee = new Employee();
             employee.AddGrade(90);
-            employee.AddGrade('B'); //80
+            employee.AddGrade('b'); //80
             employee.AddGrade(88);
 
             // act 
@@ -32,6 +32,5 @@ namespace ChallengeApp.tests
             // assert 
             Assert.AreEqual('A', statistics.AverageLetter); //average = 86
         }
-
     }
 }
