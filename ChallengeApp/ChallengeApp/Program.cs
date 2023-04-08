@@ -7,8 +7,8 @@ Console.WriteLine("Podaj liczbę z zakresu 1 - 100 lub A-E");
 Console.WriteLine("q - zakończenie wpowadzania ocen");
 Console.WriteLine();
 
-var employee = new Employee();
-
+Employee employee = new Employee("emixx", "emixxmxx", 'M');
+Console.WriteLine($"Pracownik (imię nazwisko, płeć) - {employee.Name} {employee.Surname}, {employee.Sex}");
 while (true)
 {
     Console.Write("Podaj kolejną ocenę: ");

@@ -1,10 +1,11 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee
+    public class Employee :Person
     {
         private List<float> grades = new List<float>(); 
 
-        public Employee()
+        public Employee(string name, string surname, char sex)
+            :base (name, surname, sex)
         {
         }
 
