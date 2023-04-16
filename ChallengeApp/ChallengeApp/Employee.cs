@@ -1,14 +1,16 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee :Person
+    public class Employee : IEmployee
     {
         private List<float> grades = new List<float>(); 
 
-        public Employee(string name, string surname, char sex)
-            :base (name, surname, sex)
+        public Employee(string name, string surname)
         {
+            this.Name = name;
+            this.Surname = surname;
         }
-
+        public string Name { get; private set;} 
+        public string Surname { get; private set;}
         public void AddGrade(float grade) 
         {
             if (grade >= 0 && grade <= 100) 
@@ -20,7 +22,11 @@
                 throw new Exception("błędny zakres liczb (podaj z zakresu 1-100");
             }
         }
-
+        public void AddGrade(double grade)
+        {
+            float valueDouble = (float)grade; //rzutowanie 
+            this.AddGrade(valueDouble);
+        }
         public void AddGrade(string grade) 
         {
             if (float.TryParse(grade, out float result))
@@ -43,7 +49,7 @@
             {
                 case 'A':
                 case 'a':
-                    this.grades.Add(100);
+                    this.grades.Add(1100);
                     break;
                 case 'B':
                 case 'b':
@@ -66,7 +72,7 @@
             }
         }
 
-
+        // jak (zrobić to co jest w interfejsie)
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();

@@ -1,6 +1,6 @@
 ﻿namespace ChallengeApp
 {
-    public abstract class Person
+    public  class Person
     {
         public  Person(string name, string surname, char sex)
         {
